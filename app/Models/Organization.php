@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+use App\Traits\HasSlug;
+
 class Organization extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasSlug, HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -27,5 +29,13 @@ class Organization extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
+    }
+
+    /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
     }
 }
