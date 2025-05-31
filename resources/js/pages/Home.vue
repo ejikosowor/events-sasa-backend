@@ -41,7 +41,7 @@ const handleLogout = () => {
     <div class="flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10">
         <div class="w-full max-w-sm">
             <div class="flex flex-col gap-8">
-                <div v-if="organizations || !showCreateOrganizationForm" class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                <div v-if="organizations && !showCreateOrganizationForm" class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                     <h1 class="text-xl font-medium leading-none text-gray-900 dark:text-white text-center mb-4">Your Organizations</h1>
                     <div class="flow-root">
                         <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -51,7 +51,7 @@ const handleLogout = () => {
                                         <p class="text-md font-medium text-gray-900 truncate dark:text-white">{{ organization.name }}</p>
                                     </div>
                                     <div class="inline-flex items-center text-sm font-thin text-gray-900 dark:text-white">
-                                        <TextLink :href="route('organization.show', organization)" class="underline underline-offset-4" :tabindex="6">View</TextLink>
+                                        <TextLink :href="route('organization.events.index', organization)" class="underline underline-offset-4" :tabindex="6">View</TextLink>
                                     </div>
                                 </div>
                             </li>

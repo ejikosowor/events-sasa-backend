@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventsController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Middleware\EnsureUserBelongsToOrganization;
 use Illuminate\Support\Facades\Route;
@@ -11,7 +12,11 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', EnsureUserBelongsToOrganization::class])->group(function () {
-    Route::get('organization/{organization:slug}', [OrganizationController::class, 'show'])->name('organization.show');
+    Route::get('organization/{organization:slug}/events', [EventsController::class, 'index'])->name('organization.events.index');
+    Route::post('organization/{organization:slug}/events', [EventsController::class, 'store'])->name('organization.events.store');
+    Route::post('organization/{organization:slug}/events', [EventsController::class, 'store'])->name('organization.events.store');
+    Route::get('organization/{organization:slug}/events/{event}', [EventsController::class, 'show'])->name('organization.events.show');
+    Route::patch('organization/{organization:slug}/events/{event}', [EventsController::class, 'update'])->name('organization.events.update');
 });
 
 Route::get('dashboard', function () {

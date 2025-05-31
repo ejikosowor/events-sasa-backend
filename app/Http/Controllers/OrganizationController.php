@@ -39,16 +39,6 @@ class OrganizationController extends Controller
 
         $request->user()->organizations()->attach($organization->id);
 
-        return to_route('home')->with('status', "{$organization->name} created successfully.");
-    }
-
-    /**
-     * Show the organization dashboard.
-     */
-    public function show(Organization $organization): Response
-    {
-        return Inertia::render('Organization/Show', [
-            'organization' => $organization
-        ]);
+        return to_route('organization.events.index', $organization);
     }
 }

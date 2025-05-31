@@ -44,4 +44,17 @@ export interface Organization {
     updated_at: string;
 }
 
+export interface Event {
+    id: number;
+    name: title;
+    description: string;
+    venue: string;
+    date: string;
+    price: number;
+    max_attendees: number;
+    organization_id: number;
+    created_at: string;
+    updated_at: string;
+}
+
 export type BreadcrumbItemType = BreadcrumbItem;
