@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('venue');
-            $table->dateTime('date');
+            $table->date('date');
             $table->decimal('price', 8, 2)->default(0.00);
             $table->unsignedInteger('max_attendees')->default(0);
             $table->foreignId('organization_id')
