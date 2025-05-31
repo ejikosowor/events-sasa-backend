@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Event extends Model
@@ -21,6 +22,14 @@ class Event extends Model
         'max_attendees',
         'organization_id',
     ];
+
+    /**
+     * The event's attendees.
+     */
+    public function attendees(): HasMany
+    {
+        return $this->hasMany(Attendee::class);
+    }
 
     /**
      * Get the organization that owns the event.
